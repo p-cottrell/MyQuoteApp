@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_11_042902) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_24_043619) do
   create_table "categories", force: :cascade do |t|
     t.string "category", null: false
     t.datetime "created_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_11_042902) do
 
   create_table "quotes", force: :cascade do |t|
     t.text "text", null: false
-    t.date "pub_year"
+    t.integer "pub_year"
     t.text "comment"
     t.boolean "is_public", default: true
     t.integer "user_id", null: false

@@ -1,2 +1,36 @@
-<h1>MyQuote App</h1>
-<p>This is an app</p>
+<h1>MyQuote</h1>
+<p>Cultivating Wisdom, One Quote at a Time.</p>
+
+<h2>Quote of the Day</h2>
+<hr />
+<div class="card bg-body-primary" style="margin-bottom:20px">
+  <div class="card-body">
+    <h4 class="card-title"><%= @quote_of_the_day.text %></h4>
+    <p class="card-text">
+      <%= @quote_of_the_day.philosopher.fname %>
+      <% if @quote_of_the_day.philosopher.lname.present? %> <!-- Check if the last name exists -->
+        <%= " " + @quote_of_the_day.philosopher.lname %>
+      <% end %>
+      <br />
+      [<a href="/quotes/<%= @quote_of_the_day.id %>">Read full quote</a>]
+    </p>
+  </div>
+</div>
+
+<h2>Recently Added Quotes</h2>
+<hr />
+<% @quotes.each do |quote| %> 
+  <div class="card bg-body-tertiary" style="margin-bottom:10px">
+    <div class="card-body">
+      <h4 class="card-title"><%= quote.text %></h4>
+      <p class="card-text">
+        <%= quote.philosopher.fname %>
+        <% if quote.philosopher.lname.present? %> <!-- Check if the last name exists -->
+          <%= " " + quote.philosopher.lname %>
+        <% end %>
+        <br />
+        [<a href="/quotes/<%= quote.id %>">Read full quote</a>]
+      </p>
+    </div>
+  </div>
+<% end %>

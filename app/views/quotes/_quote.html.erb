@@ -1,12 +1,13 @@
 <div id="<%= dom_id quote %>">
-  <p>
-    <strong>Text:</strong>
+  <h3>
     <%= quote.text %>
-  </p>
+  </h3>
+
+  <br>
 
   <p>
-    <strong>Pub year:</strong>
-    <%= quote.pub_year %>
+    <strong>Publication year:</strong>
+    <%= format_year(quote.pub_year) %>
   </p>
 
   <p>
@@ -14,6 +15,7 @@
     <%= quote.comment %>
   </p>
 
+<!-- 
   <p>
     <strong>Is public:</strong>
     <%= quote.is_public %>
@@ -28,5 +30,5 @@
     <strong>Philosopher:</strong>
     <%= quote.philosopher_id %>
   </p>
-
+ -->
 </div>
