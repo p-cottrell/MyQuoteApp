@@ -1,12 +1,12 @@
 # SessionsController manages user sessions for login and logout processes
 class SessionsController < ApplicationController
-  # Renders the login form.
+
   def new
   end
 
   # Creates a new user session
   def create
-    # Find a user by the email provided.
+    # Find a user by the email provided
     user = User.find_by(email: params[:email])
     
     # Check if the user exists, if the password is correct, and if the user is active

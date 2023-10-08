@@ -27,9 +27,10 @@
         </li>
       </ul>
     <% end %>
+    
   <!-- If there were no quote foound-->
-
   <% else %>
     <p>No quotes found for the selected category.</p>
+    <p>Be the first to <%= link_to "add a quote ", new_quote_path %> for this category!</p>
   <% end %>
 <% end %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :philosophers
   resources :users
 
+
   root 'home#index'
   get '/about', to: 'about#index'
   get '/search', to: 'search#index'

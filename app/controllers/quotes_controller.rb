@@ -49,6 +49,7 @@ class QuotesController < ApplicationController
     end
   end
 
+
   # DELETE /quotes/1 or /quotes/1.json
   def destroy
     @quote.destroy
@@ -67,7 +68,7 @@ class QuotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_params
-      params.require(:quote).permit(:text, :pub_year, :comment, :philosopher_id, :is_public, :user_id, quote_categories_attributes: [:id, :category_id])
+      params.require(:quote).permit(:text, :pub_year, :comment, :philosopher_id, :is_public, :user_id, quote_categories_attributes: [:id, :category_id, :_destroy])
     end
       
     

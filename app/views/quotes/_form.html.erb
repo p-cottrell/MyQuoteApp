@@ -1,4 +1,6 @@
-<!-- Display errors related to Quote and its nested QuoteCategories -->
+<!-- Form for adding/editing a quote and its associated categories -->
+
+<!-- Display validation errors, if any -->
 <% if @quote.errors.any? %>
   <div class="alert alert-danger">
     <ul>
@@ -9,28 +11,48 @@
   </div>
 <% end %>
 
+<!-- Main form for quote creation/editing -->
 <%= form_with(model: @quote, local: true) do |f| %>
-  <!-- Hidden field for user_id -->
+
+  <!-- A hidden category fieldset serving as a template for adding new categories dynamically -->
+  <div id="category-template" style="display: none;">
+    <%= f.fields_for :quote_categories, QuoteCategory.new do |qc| %>
+      <div class="category-field row mb-2">
+        <div class="col-auto">
+          <!-- Dropdown to select a category -->
+          <%= qc.select :category_id, Category.all.collect { |cat| [cat.category, cat.id] }, { include_blank: 'Select a category...' }, class: "form-control d-inline-block" %>
+        </div>
+        <!-- Link to remove the category field -->
+        <div class="col-auto align-self-center">
+          <%= link_to '[-] Remove', '#', class: 'remove-category', style: "color: red; text-decoration: none;" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Hidden field to associate the quote with the current user -->
   <%= f.hidden_field :user_id, value: current_user.id %>
 
-  <!-- Form fields associated with the quotes table -->
+  <!-- Form fields for quote attributes -->
   <div class="form-group" style="padding-bottom: 10px;">
     <%= f.text_area :text, placeholder: 'Quote Text', class: 'form-control' %>
   </div>
 
   <div class="form-group" style="padding-bottom: 10px;">
-    <%= f.number_field :pub_year, placeholder: 'Publication Year', class: 'form-control' %>
+    <%= f.number_field :pub_year, placeholder: 'Publication Year (if known)', class: 'form-control' %>
   </div>
 
   <div class="form-group" style="padding-bottom: 10px;">
     <%= f.text_area :comment, placeholder: 'Comment', class: 'form-control' %>
   </div>
 
+  <!-- Dropdown to select a philosopher -->
   <div class="form-group" style="padding-bottom: 10px;">
     <%= f.select :philosopher_id, Philosopher.all.collect { |p| ["#{p.fname} #{p.lname}", p.id] }, prompt: 'Select a Philosopher', class: "form-control" %>
     <%= link_to 'Add New Philosopher', new_philosopher_path, class: "btn btn-secondary mt-2" %>
   </div>
 
+  <!-- Checkbox for public/private quote setting -->
   <div class="form-check" style="padding-bottom: 10px;">
     <%= f.label :is_public do %>
       Public
@@ -38,24 +60,58 @@
     <% end %>
   </div>
 
+  <!-- Container for categories associated with the quote -->
   <div id="categories-container">
-    <% @quote.quote_categories.each do |quote_category| %>
-      <%= f.fields_for :quote_categories, quote_category do |qc| %>
-        <div class="category-field row mb-2">
-          <div class="col-auto">
-            <%= qc.label :category_id, "Category", class: "form-label d-inline-block me-2" %>
-            <%= qc.select :category_id, Category.all.collect { |cat| [cat.category, cat.id] }, { include_blank: true }, class: "form-control d-inline-block" %>
-          </div>
+    <%= f.fields_for :quote_categories do |qc| %>
+      <!-- This is the form fields for existing categories or initially rendered ones -->
+      <div class="category-field row mb-2">
+        <div class="col-auto">
+          <%= qc.select :category_id, Category.all.collect { |cat| [cat.category, cat.id] }, { include_blank: 'Select a category...' }, class: "form-control d-inline-block" %>
         </div>
-      <% end %>
+        <div class="col-auto align-self-center">
+          <%= link_to '[-] Remove', '#', class: 'remove-category', style: "color: red; text-decoration: none;" %>
+        </div>
+      </div>
     <% end %>
   </div>
 
+  <!-- Link to add more categories to the quote -->
+  <div class="mb-2">
+    <%= link_to '[+] Add another category', '#', class: 'add-category', style: "color: blue; text-decoration: none;" %>
+  </div>
+
+  <!-- Submit button for the form -->
   <div class="mt-3">
     <%= f.submit @quote.new_record? ? 'Add Quote' : 'Update Quote', class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>
 
+<!-- JavaScript to handle adding/removing category fields -->
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Add new category field when 'Add another category' is clicked
+    document.querySelector('.add-category').addEventListener('click', function(e) {
+      e.preventDefault();
 
+      const categoriesContainer = document.querySelector('#categories-container');
+      const newCategoryField = document.querySelector('#category-template').cloneNode(true);
+
+      // Make the cloned field visible and remove the id to prevent duplicates
+      newCategoryField.style.display = 'block';
+      newCategoryField.removeAttribute('id');
+
+      categoriesContainer.appendChild(newCategoryField);
+    });
+
+    // Function to remove a category field
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.classList.contains('remove-category')) {
+        e.preventDefault();
+
+        // Remove the clicked category field
+        e.target.closest('.category-field').remove();
+      }
+    });
+  });
 </script>
