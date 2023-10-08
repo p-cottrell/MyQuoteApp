@@ -3,7 +3,7 @@ class QuotesController < ApplicationController
 
   # GET /quotes or /quotes.json
   def index
-    @quotes = Quote.all
+    @quotes = Quote.where(is_public: true)
   end
 
   # GET /quotes/1 or /quotes/1.json
@@ -13,7 +13,9 @@ class QuotesController < ApplicationController
   # GET /quotes/new
   def new
     @quote = Quote.new
+    @quote.quote_categories.build
   end
+  
 
   # GET /quotes/1/edit
   def edit
@@ -65,6 +67,8 @@ class QuotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def quote_params
-      params.require(:quote).permit(:text, :pub_year, :comment, :is_public, :user_id, :philosopher_id)
+      params.require(:quote).permit(:text, :pub_year, :comment, :philosopher_id, :is_public, :user_id, quote_categories_attributes: [:id, :category_id])
     end
+      
+    
 end

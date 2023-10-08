@@ -1,10 +1,18 @@
+
 <p style="color: green"><%= notice %></p>
 
+<!-- Render _quote.html.erb -->
 <%= render @quote %>
 
 <div>
-  <%= link_to "Edit this quote", edit_quote_path(@quote) %> |
-  <%= link_to "Back to quotes", quotes_path %>
+  <!-- Only allow the logged-in user who created the quote to edit it -->
+  <% if current_user == @quote.user %>
+    <%= link_to "Edit this quote", edit_quote_path(@quote) %>
+  <% end %>
 
-  <%= button_to "Destroy this quote", @quote, method: :delete %>
+  <!-- If the user is either the creator of the quote or an admin, allow them to delete the quote -->
+  <% if current_user && (current_user == @quote.user || current_user.is_admin) %>
+    <%= button_to 'Delete this quote', quote_path(@quote), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <% end %>
+
 </div>

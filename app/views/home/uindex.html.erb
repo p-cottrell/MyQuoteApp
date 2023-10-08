@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% if session[:user_id] %>
+    <p>Hello, <%= User.find(session[:user_id]).fname %>!</p>
+    
+    <div class="button-group">
+        <%= link_to 'Edit Profile', edit_user_path(session[:user_id]), class: "btn btn-primary" %>
+        <%= button_to "Sign Out", logout_path, method: :delete, class:"btn btn-danger" %>
+    </div>
+
+<% else %>
+    <p>You are not logged in</p>
+    <%= link_to 'Register', new_user_path, class: "btn btn-primary" %>
+    <%= link_to 'Login', new_session_path, class: "btn btn-primary" %>
+<% end %>
+

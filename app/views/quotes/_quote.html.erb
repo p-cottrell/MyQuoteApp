@@ -1,34 +1,49 @@
 <div id="<%= dom_id quote %>">
   <h3>
-    <%= quote.text %>
+    <strong>Quote:</strong> <%= quote.text %>
   </h3>
-
   <br>
-
-  <p>
-    <strong>Publication year:</strong>
-    <%= format_year(quote.pub_year) %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= quote.comment %>
-  </p>
-
-<!-- 
-  <p>
-    <strong>Is public:</strong>
-    <%= quote.is_public %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= quote.user_id %>
-  </p>
-
-  <p>
+  <h3>
     <strong>Philosopher:</strong>
-    <%= quote.philosopher_id %>
+    <%= "#{quote.philosopher.fname} #{quote.philosopher.lname}" %>
+  </h3>
+  <p>
+    <strong>Birth Year:</strong> <%= format_year(quote.philosopher.birth_year) %>
+    <br>
+    <% if quote.philosopher.death_year.present? %>
+      <strong>Death Year:</strong> <%= format_year(quote.philosopher.death_year) %>
+      <br>
+    <% end %>
+    <% if quote.philosopher.biography.present? %>
+      <strong>Short Biography:</strong> <%= quote.philosopher.biography %>
+      <br>
+    <% end %>
   </p>
- -->
+
+  <% if quote.pub_year.present? %>
+    <p>
+      <strong>Publication Year:</strong> <%= format_year(quote.pub_year) %>
+    </p>
+  <% end %>
+
+  <p>
+    <strong>Collected by:</strong> <%= quote.user.fname %>
+  </p>
+
+  <% if quote.comment.present? %>
+    <p>
+      <strong><%= quote.user.fname %>'s Comment:</strong> <%= quote.comment %>
+    </p>
+  <% end %>
+
+
+  <p>
+    <strong>Categories:</strong>
+    <% quote.categories.each_with_index do |category, index| %>
+      <!-- Create a link for each category that points to the search path with the category's ID as the query parameter -->
+      | <%= link_to category.category, search_path(category_query: category.id) %>
+    <% end %>
+  </p>
+
+
 </div>

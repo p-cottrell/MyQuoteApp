@@ -2,9 +2,15 @@
 
 <%= render @philosopher %>
 
-<div>
-  <%= link_to "Edit this philosopher", edit_philosopher_path(@philosopher) %> |
-  <%= link_to "Back to philosophers", philosophers_path %>
+<% unless current_user.is_admin %>
+  <%= link_to "Back to Quote", new_quote_path %>
+<% end %>
 
-  <%= button_to "Destroy this philosopher", @philosopher, method: :delete %>
-</div>
+<% if current_user.is_admin %>
+  <div>
+    <%= link_to "Edit this philosopher", edit_philosopher_path(@philosopher) %> |
+    <%= link_to "Back to philosophers", philosophers_path %>
+  
+    <%= button_to "Delete this philosopher", @philosopher, method: :delete %>
+  </div>
+<%end%>

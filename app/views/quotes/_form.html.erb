@@ -1,47 +1,61 @@
-<%= form_with(model: quote) do |form| %>
-  <% if quote.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
-
-      <ul>
-        <% quote.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :text, style: "display: block" %>
-    <%= form.text_area :text %>
-  </div>
-
-  <div>
-    <%= form.label :pub_year, style: "display: block" %>
-    <%= form.date_field :pub_year %>
-  </div>
-
-  <div>
-    <%= form.label :comment, style: "display: block" %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div>
-    <%= form.label :is_public, style: "display: block" %>
-    <%= form.check_box :is_public %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.label :philosopher_id, style: "display: block" %>
-    <%= form.text_field :philosopher_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+<!-- Display errors related to Quote and its nested QuoteCategories -->
+<% if @quote.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @quote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>
+
+<%= form_with(model: @quote, local: true) do |f| %>
+  <!-- Hidden field for user_id -->
+  <%= f.hidden_field :user_id, value: current_user.id %>
+
+  <!-- Form fields associated with the quotes table -->
+  <div class="form-group" style="padding-bottom: 10px;">
+    <%= f.text_area :text, placeholder: 'Quote Text', class: 'form-control' %>
+  </div>
+
+  <div class="form-group" style="padding-bottom: 10px;">
+    <%= f.number_field :pub_year, placeholder: 'Publication Year', class: 'form-control' %>
+  </div>
+
+  <div class="form-group" style="padding-bottom: 10px;">
+    <%= f.text_area :comment, placeholder: 'Comment', class: 'form-control' %>
+  </div>
+
+  <div class="form-group" style="padding-bottom: 10px;">
+    <%= f.select :philosopher_id, Philosopher.all.collect { |p| ["#{p.fname} #{p.lname}", p.id] }, prompt: 'Select a Philosopher', class: "form-control" %>
+    <%= link_to 'Add New Philosopher', new_philosopher_path, class: "btn btn-secondary mt-2" %>
+  </div>
+
+  <div class="form-check" style="padding-bottom: 10px;">
+    <%= f.label :is_public do %>
+      Public
+      <%= f.check_box :is_public, class: "form-check-input" %>
+    <% end %>
+  </div>
+
+  <div id="categories-container">
+    <% @quote.quote_categories.each do |quote_category| %>
+      <%= f.fields_for :quote_categories, quote_category do |qc| %>
+        <div class="category-field row mb-2">
+          <div class="col-auto">
+            <%= qc.label :category_id, "Category", class: "form-label d-inline-block me-2" %>
+            <%= qc.select :category_id, Category.all.collect { |cat| [cat.category, cat.id] }, { include_blank: true }, class: "form-control d-inline-block" %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="mt-3">
+    <%= f.submit @quote.new_record? ? 'Add Quote' : 'Update Quote', class: 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>
+
+<script>
+
+</script>
