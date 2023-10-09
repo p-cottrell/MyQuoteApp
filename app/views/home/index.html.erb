@@ -1,4 +1,9 @@
 <!-- The MyQuote homepage -->
+
+<% if flash[:error] %>
+  <p class="error" style="color:red;"><%= flash[:error] %></p>
+<% end %>
+
 <h1>MyQuote</h1>
 
 <p>Cultivating Wisdom, One Quote at a Time.</p>

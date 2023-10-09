@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   get '/admin', to: 'home#aindex'
   get '/userhome', to: 'home#uindex'
-  get '/your-quotes', to: 'home#uquotes'
+  get '/your-quotes', to: 'home#uquotes', as: 'your_quotes'
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

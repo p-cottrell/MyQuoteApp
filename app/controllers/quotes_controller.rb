@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: %i[ show edit update destroy ]
-  before_action :require_login, except: [:show]
+  before_action :require_login, except: [:show,]
 
   # GET /quotes or /quotes.json
   def index
@@ -56,7 +56,7 @@ class QuotesController < ApplicationController
     @quote.destroy
 
     respond_to do |format|
-      format.html { redirect_to quotes_url, notice: "Quote was successfully destroyed." }
+      format.html { redirect_to your_quotes_path, notice: 'Quote was successfully deleted.' }
       format.json { head :no_content }
     end
   end
