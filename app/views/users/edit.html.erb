@@ -1,12 +1,16 @@
-<div style="padding-top: 10px;">
-  <h3>Update User Details</h3>
-</div>
-
-<%= render "form", user: @user %>
-
-<!-- 
-<div style="padding-top: 10px;">
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
-</div>
--->
+<% if current_user == @quote.user || is_administrator? %>
+  <div style="padding-top: 10px;">
+    <h3>Update User Details</h3>
+  </div>
+  
+  <%= render "form", user: @user %>
+  
+  <!-- 
+  <div style="padding-top: 10px;">
+    <%= link_to "Show this user", @user %> |
+    <%= link_to "Back to users", users_path %>
+  </div>
+  -->
+<% else %>
+  <p>You are not authorised to view this page.</p>
+<% end %>

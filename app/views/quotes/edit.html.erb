@@ -1,13 +1,17 @@
-<h1>Editing quote</h1>
-
-<%= render "form", quote: @quote %>
-
-<br>
-
-
-
-<div>
-  <%= link_to "Show this quote", @quote %> |
-  <%= link_to "Back to quotes", quotes_path %>
-</div> 
+<% if current_user == @quote.user || is_administrator? %>
+  <h1>Editing quote</h1>
+  
+  <%= render "form", quote: @quote %>
+  
+  <br>
+  
+  
+  
+  <div>
+    <%= link_to "Show this quote", @quote %> |
+    <%= link_to "Back to quotes", quotes_path %>
+  </div> 
+<% else %>
+  <p>You are not authorised to view this page.</p>
+<% end %>
 

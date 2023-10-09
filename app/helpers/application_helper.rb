@@ -10,5 +10,4 @@ module ApplicationHelper
           year.to_s
       end
   end
-  
 end

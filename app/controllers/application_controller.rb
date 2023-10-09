@@ -23,8 +23,15 @@ class ApplicationController < ActionController::Base
     # If not logged in, it redirects the user to the login page.
     def require_login
       unless logged_in?
-        flash[:error] = "You are not permitted to access this resource"
+        flash[:error] = "Please sign in or create an account to continue."
         redirect_to login_path
+      end
+    end
+
+    def require_admin
+      unless is_administrator?
+        flash[:error] = "You are not authorised to view this page."
+        redirect_to root_path
       end
     end
   end

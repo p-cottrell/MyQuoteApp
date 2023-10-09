@@ -1,7 +1,6 @@
 
 <p style="color: green"><%= notice %></p>
 
-<!-- Render _quote.html.erb -->
 <%= render @quote %>
 
 <div>
@@ -11,7 +10,7 @@
   <% end %>
 
   <!-- If the user is either the creator of the quote or an admin, allow them to delete the quote -->
-  <% if current_user && (current_user == @quote.user || current_user.is_admin) %>
+  <% if current_user == @quote.user || is_administrator? %>
     <%= button_to 'Delete this quote', quote_path(@quote), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   <% end %>
 

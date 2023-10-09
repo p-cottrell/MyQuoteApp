@@ -1,10 +1,14 @@
-<h1>Editing philosopher</h1>
+<% if is_administrator? %>
+  <h1>Editing philosopher</h1>
 
-<%= render "form", philosopher: @philosopher %>
+  <%= render "form", philosopher: @philosopher %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this philosopher", @philosopher %> |
-  <%= link_to "Back to philosophers", philosophers_path %>
-</div>
+  <div>
+    <%= link_to "Show this philosopher", @philosopher %> |
+    <%= link_to "Back to philosophers", philosophers_path %>
+  </div>
+<% else %>
+  <p>You are not authorised to view this page.</p>
+<% end %>

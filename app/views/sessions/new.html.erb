@@ -1,4 +1,4 @@
-<!-- app/views/sessions/new.html.erb -->
+<!-- Login Form -->
 <% if flash[:error] %>
   <p class="error" style="color:red;"><%= flash[:error] %></p>
 <% end %>
@@ -13,5 +13,12 @@
     </div>
     <div>
         <%= submit_tag 'Login', class: 'btn btn-primary' %>
+    </div>
+
+    <br>
+  
+   <h4>...or click here to register</h4>
+    <div>
+        <%= link_to 'Register', new_user_path, class: "btn btn-primary" %>
     </div>
 <% end %>

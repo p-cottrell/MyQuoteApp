@@ -1,17 +1,34 @@
-<h3>Your Quotes</h3>
-<hr />
-<% @quotes.each do |quote| %>
-    <div class="card bg-body-tertiary" style="margin-bottom:10px">
-    <div class="card-body">
-      <h4 class="card-title"><%= quote.text %></h4>
-      <p class="card-text">
-        <%= quote.philosopher.fname %>
-        <% if quote.philosopher.lname.present? %>
-          <%= " " + quote.philosopher.lname %>
-        <% end %>
-        <br />
-        [<a href="/quotes/<%= quote.id %>">Read full quote</a>]
-      </p>
-    </div>
-    </div>
+
+<% if logged_in? %>
+  <!-- Displey the users quotes -->
+  <h3>Your Quotes</h3>
+  <hr />
+  <!-- Loop through each quote and display it -->
+  <% @quotes.each do |quote| %>
+      <!-- Create a card for each quote with some styling -->
+      <div class="card bg-body-tertiary" style="margin-bottom:10px">
+          <div class="card-body">
+              <!-- Display the text of the quote -->
+              <h4 class="card-title"><%= quote.text %></h4>
+              <p class="card-text">
+                  <!-- Display the first name of the philosopher who said the quote -->
+                  <%= quote.philosopher.fname %>
+                  
+                  <!-- Check if the philosopher has a last name and if so, display it -->
+                  <% if quote.philosopher.lname.present? %>
+                      <%= " " + quote.philosopher.lname %>
+                  <% end %>
+  
+                  <!-- Link to view the full quote -->
+                  <br />
+                  [<a href="/quotes/<%= quote.id %>">Read full quote</a>]
+              </p>
+          </div>
+      </div>
+  <% end %>
+
+<% else %>
+    <p>You are not logged in</p>
+    <%= link_to 'Register', new_user_path, class: "btn btn-primary" %>
+    <%= link_to 'Login', new_session_path, class: "btn btn-primary" %>
 <% end %>

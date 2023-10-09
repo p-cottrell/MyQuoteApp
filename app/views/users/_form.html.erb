@@ -1,34 +1,36 @@
 <%= form_with(model: user) do |form| %>
+
+  <!-- Display validation errors, if any -->
   <% if user.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+      <h2><%= pluralise(user.errors.count, "error") %> prohibited this user from being saved:</h2>
       <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <% if current_user == user %>
-    <!-- Name and Password Fields for Current User -->
-    <div class="form-group">
-      <%= form.text_field :fname, placeholder: 'First Name', class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= form.text_field :lname, placeholder: 'Last Name', class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= form.password_field :password, placeholder: 'Choose a strong password', class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= form.password_field :password_confirmation, placeholder: 'Confirm your password', class: 'form-control' %>
-    </div>
-  <% end %>
+  <!-- Fields available for all (new sign ups and current users editing their profiles) -->
+  <div class="form-group">
+    <%= form.email_field :email, placeholder: 'Enter your email', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.text_field :fname, placeholder: 'First Name', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.text_field :lname, placeholder: 'Last Name', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.password_field :password, placeholder: 'Choose a strong password', class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.password_field :password_confirmation, placeholder: 'Confirm your password', class: 'form-control' %>
+  </div>
 
-  <% if current_user.is_admin %>
-    <!-- Admin Control Section -->
+  <!-- Fields available only to admin users -->
+  <% if current_user&.is_admin? %>
     <div class="admin-control">
       <div class="form-group">
         <%= form.label :status %>
@@ -39,19 +41,19 @@
         <%= form.check_box :is_admin %>
       </div>
     </div>
+    <!-- If its not a new record admins can delete -->
+    <% unless user.new_record? %>
+      <%= button_to 'Delete User', user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: 'btn btn-danger' %>
+    <% end %>
   <% else %>
-    <!-- For non-admin users, keep the hidden fields -->
+    <!-- For non-admin users keep the hidden fields -->
     <%= form.hidden_field :is_admin, value: false %>
     <%= form.hidden_field :status, value: "Active" %>
   <% end %>
 
   <div class="form-group">
-    <%= form.submit 'Submit', class: 'btn btn-primary' %>
+    <%= form.submit user.new_record? ? 'Sign Up' : 'Update Profile', class: 'btn btn-primary' %>
   </div>
 
-  <% if current_user.is_admin %>
-    <!-- Button to Delete User (only visible to admins) -->
-    <%= button_to 'Delete User', user_path(user), method: :delete, data: { confirm: 'Are you sure you want to delete this user?' }, class: 'btn btn-danger' %>
-  <% end %>
-
 <% end %>
+

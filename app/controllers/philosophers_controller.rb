@@ -1,5 +1,7 @@
 class PhilosophersController < ApplicationController
   before_action :set_philosopher, only: %i[ show edit update destroy ]
+  before_action :require_login
+  before_action :require_admin, except: [:create, :new, :show]
 
   # GET /philosophers or /philosophers.json
   def index

@@ -6,7 +6,7 @@
   <%= link_to "Back to Quote", new_quote_path %>
 <% end %>
 
-<% if current_user.is_admin %>
+<% if is_administrator? %>
   <div>
     <%= link_to "Edit this philosopher", edit_philosopher_path(@philosopher) %> |
     <%= link_to "Back to philosophers", philosophers_path %>

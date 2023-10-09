@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :require_login
+  before_action :require_admin
 
   # GET /categories or /categories.json
   def index
@@ -58,6 +60,14 @@ class CategoriesController < ApplicationController
   end
 
   private
+    # To ensure only admins have access to the categories 
+    def admin_access
+      unless is_administrator?
+        flash[:error] = "Only administrators can access this resource"
+        redirect_to root_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])

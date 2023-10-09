@@ -1,24 +1,26 @@
 <div id="<%= dom_id philosopher %>">
   <p>
-    <strong>Fname:</strong>
+    <strong>First Name:</strong>
     <%= philosopher.fname %>
   </p>
 
   <p>
-    <strong>Lname:</strong>
+    <strong>Last Name:</strong>
     <%= philosopher.lname %>
   </p>
 
   <p>
-    <strong>Birth year:</strong>
+    <strong>Birth Year:</strong>
     <%= format_year(philosopher.birth_year) %>
   </p>
-
-  <p>
-    <strong>Death year:</strong>
-    <%= format_year(philosopher.death_year) %>
-  </p>
-
+  
+  <% if philosopher.death_year %>
+    <p>
+      <strong>Death Year:</strong>
+      <%= format_year(philosopher.death_year) %>
+    </p>
+  <%end%>
+  
   <p>
     <strong>Biography:</strong>
     <%= philosopher.biography %>

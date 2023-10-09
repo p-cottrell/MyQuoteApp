@@ -3,7 +3,7 @@
 <%= render @user %>
 
 <div>
-  <% if current_user.is_admin %>
+  <% if is_administrator? %>
     <%= link_to "Edit this user", edit_user_path(@user) %> |
     <%= link_to "Back to users", users_path %>
   

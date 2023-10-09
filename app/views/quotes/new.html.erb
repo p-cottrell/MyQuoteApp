@@ -1,9 +1,15 @@
-<h1>New Quote</h1>
-
-<%= render "form", quote: @quote %>
-
-<br>
-
-<div>
-  <!--<%= link_to "Back to quotes", quotes_path %>-->
-</div>
+<% if logged_in? %>
+  <h1>New Quote</h1>
+  
+  <%= render "form", quote: @quote %>
+  
+  <br>
+  
+  <div>
+    <!--<%= link_to "Back to quotes", quotes_path %>-->
+  </div>
+<% else %>
+    <p>You are not logged in</p>
+    <%= link_to 'Register', new_user_path, class: "btn btn-primary" %>
+    <%= link_to 'Login', new_session_path, class: "btn btn-primary" %>
+<% end %>
