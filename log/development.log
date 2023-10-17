@@ -24425,3 +24425,788 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 0.1ms | Allocations: 2476)
 
 
+Started GET "/" for 127.0.0.1 at 2023-10-17 09:19:27 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mQuote Count (8.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "quotes"[0m
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  [1m[36mQuote Load (0.9ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."id" ASC LIMIT ? OFFSET ?[0m  [["is_public", 1], ["LIMIT", 1], ["OFFSET", 4]]
+  ↳ app/controllers/home_controller.rb:8:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mPhilosopher Load (2.8ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:20
+  [1m[36mQuote Load (0.4ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."created_at" DESC LIMIT ?[0m  [["is_public", 1], ["LIMIT", 5]]
+  ↳ app/views/home/index.html.erb:38
+  [1m[36mPhilosopher Load (6.8ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?)[0m  [["id", 15], ["id", 14], ["id", 11], ["id", 2]]
+  ↳ app/views/home/index.html.erb:38
+  Rendered home/index.html.erb within layouts/application (Duration: 105.1ms | Allocations: 11626)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 24.1ms | Allocations: 5535)
+  Rendered layout layouts/application.html.erb (Duration: 135.2ms | Allocations: 17831)
+Completed 200 OK in 234ms (Views: 131.5ms | ActiveRecord: 22.3ms | Allocations: 33604)
+
+
+Started GET "/about" for 127.0.0.1 at 2023-10-17 09:50:21 +0800
+Processing by AboutController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering about/index.html.erb within layouts/application
+  Rendered about/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 117)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 10.5ms | Allocations: 4804)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 5409)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.6ms | Allocations: 6065)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-17 09:54:11 +0800
+Processing by HomeController#index as HTML
+  [1m[36mQuote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "quotes"[0m
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  [1m[36mQuote Load (0.3ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."id" ASC LIMIT ? OFFSET ?[0m  [["is_public", 1], ["LIMIT", 1], ["OFFSET", 4]]
+  ↳ app/controllers/home_controller.rb:8:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mPhilosopher Load (0.3ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:20
+  [1m[36mQuote Load (0.7ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."created_at" DESC LIMIT ?[0m  [["is_public", 1], ["LIMIT", 5]]
+  ↳ app/views/home/index.html.erb:38
+  [1m[36mPhilosopher Load (0.7ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?)[0m  [["id", 15], ["id", 14], ["id", 11], ["id", 2]]
+  ↳ app/views/home/index.html.erb:38
+  Rendered home/index.html.erb within layouts/application (Duration: 48.4ms | Allocations: 6525)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 28.5ms | Allocations: 3385)
+  Rendered layout layouts/application.html.erb (Duration: 78.8ms | Allocations: 10185)
+Completed 200 OK in 129ms (Views: 86.1ms | ActiveRecord: 2.9ms | Allocations: 15835)
+
+
+Started GET "/about" for 127.0.0.1 at 2023-10-17 10:32:13 +0800
+Processing by AboutController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering about/index.html.erb within layouts/application
+  Rendered about/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 7)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 18.6ms | Allocations: 3517)
+  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 3947)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.7ms | Allocations: 4207)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-17 10:32:38 +0800
+Processing by HomeController#index as HTML
+  [1m[36mQuote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "quotes"[0m
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  [1m[36mQuote Load (0.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."id" ASC LIMIT ? OFFSET ?[0m  [["is_public", 1], ["LIMIT", 1], ["OFFSET", 4]]
+  ↳ app/controllers/home_controller.rb:8:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mPhilosopher Load (0.1ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:20
+  [1m[36mQuote Load (0.3ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."created_at" DESC LIMIT ?[0m  [["is_public", 1], ["LIMIT", 5]]
+  ↳ app/views/home/index.html.erb:38
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?)[0m  [["id", 15], ["id", 14], ["id", 11], ["id", 2]]
+  ↳ app/views/home/index.html.erb:38
+  Rendered home/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 2654)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 6.9ms | Allocations: 3347)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 6246)
+Completed 200 OK in 20ms (Views: 14.6ms | ActiveRecord: 1.1ms | Allocations: 7795)
+
+
+Started GET "/login" for 127.0.0.1 at 2023-10-17 10:35:16 +0800
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 999)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 20.2ms | Allocations: 3352)
+  Rendered layout layouts/application.html.erb (Duration: 27.1ms | Allocations: 4609)
+Completed 200 OK in 33ms (Views: 31.5ms | ActiveRecord: 0.2ms | Allocations: 5261)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-17 11:05:57 +0800
+Processing by HomeController#index as HTML
+  [1m[36mQuote Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "quotes"[0m
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  [1m[36mQuote Load (0.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."id" ASC LIMIT ? OFFSET ?[0m  [["is_public", 1], ["LIMIT", 1], ["OFFSET", 4]]
+  ↳ app/controllers/home_controller.rb:8:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:20
+  [1m[36mQuote Load (5.9ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."created_at" DESC LIMIT ?[0m  [["is_public", 1], ["LIMIT", 5]]
+  ↳ app/views/home/index.html.erb:38
+  [1m[36mPhilosopher Load (0.3ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?)[0m  [["id", 15], ["id", 14], ["id", 11], ["id", 2]]
+  ↳ app/views/home/index.html.erb:38
+  Rendered home/index.html.erb within layouts/application (Duration: 18.8ms | Allocations: 2670)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 8.4ms | Allocations: 3387)
+  Rendered layout layouts/application.html.erb (Duration: 29.5ms | Allocations: 6302)
+Completed 200 OK in 47ms (Views: 23.9ms | ActiveRecord: 7.5ms | Allocations: 7970)
+
+
+Started GET "/login" for 127.0.0.1 at 2023-10-17 11:20:07 +0800
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 655)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 16.5ms | Allocations: 4755)
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 5668)
+Completed 200 OK in 30ms (Views: 26.6ms | ActiveRecord: 0.7ms | Allocations: 6196)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-10-17 11:20:23 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"hendrix@email.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "hendrix@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `create'
+Redirected to http://localhost:3000/userhome
+Completed 302 Found in 256ms (ActiveRecord: 1.4ms | Allocations: 4845)
+
+
+Started GET "/userhome" for 127.0.0.1 at 2023-10-17 11:20:23 +0800
+Processing by HomeController#uindex as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/uindex.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/home/uindex.html.erb:4
+  Rendered home/uindex.html.erb within layouts/application (Duration: 26.1ms | Allocations: 3165)
+  Rendered layouts/_header.html.erb (Duration: 11.7ms | Allocations: 459)
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 3882)
+Completed 200 OK in 41ms (Views: 40.0ms | ActiveRecord: 0.4ms | Allocations: 4406)
+
+
+Started GET "/your-quotes" for 127.0.0.1 at 2023-10-17 11:20:27 +0800
+Processing by HomeController#uquotes as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/uquotes.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mQuote Load (0.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."user_id" = ?[0m  [["user_id", 18]]
+  ↳ app/views/home/uquotes.html.erb:7
+  [1m[36mPhilosopher Load (0.3ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?)[0m  [["id", 10], ["id", 15]]
+  ↳ app/views/home/uquotes.html.erb:7
+  Rendered home/uquotes.html.erb within layouts/application (Duration: 30.4ms | Allocations: 7612)
+  Rendered layouts/_header.html.erb (Duration: 0.8ms | Allocations: 448)
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 8305)
+Completed 200 OK in 47ms (Views: 33.7ms | ActiveRecord: 0.6ms | Allocations: 10702)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-17 11:22:10 +0800
+Processing by HomeController#index as HTML
+  [1m[36mQuote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "quotes"[0m
+  ↳ app/controllers/home_controller.rb:6:in `index'
+  [1m[36mQuote Load (0.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."id" ASC LIMIT ? OFFSET ?[0m  [["is_public", 1], ["LIMIT", 1], ["OFFSET", 4]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:20
+  [1m[36mQuote Load (0.3ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."created_at" DESC LIMIT ?[0m  [["is_public", 1], ["LIMIT", 5]]
+  ↳ app/views/home/index.html.erb:38
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?)[0m  [["id", 15], ["id", 14], ["id", 11], ["id", 2]]
+  ↳ app/views/home/index.html.erb:38
+  Rendered home/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 3553)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 3.2ms | Allocations: 989)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 4788)
+Completed 200 OK in 20ms (Views: 12.9ms | ActiveRecord: 1.2ms | Allocations: 6467)
+
+
+Started GET "/search" for 127.0.0.1 at 2023-10-17 11:25:52 +0800
+Processing by SearchController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  Rendered search/index.html.erb within layouts/application (Duration: 19.7ms | Allocations: 4051)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 1.9ms | Allocations: 1017)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 5520)
+Completed 200 OK in 43ms (Views: 26.6ms | ActiveRecord: 2.3ms | Allocations: 7253)
+
+
+Started GET "/search?category_query=1&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:05:53 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"1", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 1], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.4ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 1], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?)[0m  [["id", 10], ["id", 3]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 15.5ms | Allocations: 4799)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 2.5ms | Allocations: 1020)
+  Rendered layout layouts/application.html.erb (Duration: 19.6ms | Allocations: 6228)
+Completed 200 OK in 69ms (Views: 19.4ms | ActiveRecord: 2.1ms | Allocations: 18259)
+
+
+Started GET "/search?category_query=1&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:06:17 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"1", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 1], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.1ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 1], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?)[0m  [["id", 10], ["id", 3]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 3659)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 2.4ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 5058)
+Completed 200 OK in 16ms (Views: 12.2ms | ActiveRecord: 1.1ms | Allocations: 6129)
+
+
+Started GET "/search?category_query=6&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:06:55 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"6", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 6], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.1ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 6], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.3ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?)[0m  [["id", 2], ["id", 3]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 13.6ms | Allocations: 3651)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 1.6ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 5052)
+Completed 200 OK in 22ms (Views: 17.7ms | ActiveRecord: 1.0ms | Allocations: 6121)
+
+
+Started GET "/search" for 127.0.0.1 at 2023-10-17 12:07:18 +0800
+Processing by SearchController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  Rendered search/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1409)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 4.4ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 2800)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 0.9ms | Allocations: 3080)
+
+
+Started GET "/search?category_query=4&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:08:03 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"4", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 4], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.1ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 4], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.3ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?)[0m  [["id", 11], ["id", 15]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 11.1ms | Allocations: 3659)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 2.6ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 5031)
+Completed 200 OK in 20ms (Views: 15.1ms | ActiveRecord: 1.0ms | Allocations: 6100)
+
+
+Started GET "/search" for 127.0.0.1 at 2023-10-17 12:08:27 +0800
+Processing by SearchController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  Rendered search/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1409)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 1.9ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | Allocations: 2805)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.3ms | Allocations: 3084)
+
+
+Started GET "/search?category_query=3&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:09:59 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"3", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 3], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.4ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 3], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.4ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 2], ["id", 14], ["id", 15], ["id", 11]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 18.8ms | Allocations: 4148)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 1.9ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 5541)
+Completed 200 OK in 26ms (Views: 21.7ms | ActiveRecord: 1.5ms | Allocations: 6610)
+
+
+Started GET "/search" for 127.0.0.1 at 2023-10-17 12:10:44 +0800
+Processing by SearchController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  Rendered search/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1409)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 2.1ms | Allocations: 981)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2790)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.2ms | Allocations: 3069)
+
+
+Started GET "/search?category_query=4&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:12:50 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"4", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 4], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.1ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 4], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?)[0m  [["id", 11], ["id", 15]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 12.9ms | Allocations: 3659)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 1.9ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 5079)
+Completed 200 OK in 21ms (Views: 15.9ms | ActiveRecord: 1.2ms | Allocations: 6147)
+
+
+Started GET "/search?category_query=3&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:13:13 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"3", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 3], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 3], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 2], ["id", 14], ["id", 15], ["id", 11]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 26.2ms | Allocations: 4148)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 1.5ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 30.1ms | Allocations: 5557)
+Completed 200 OK in 36ms (Views: 30.8ms | ActiveRecord: 1.1ms | Allocations: 6626)
+
+
+Started GET "/search" for 127.0.0.1 at 2023-10-17 12:14:07 +0800
+Processing by SearchController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  Rendered search/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1409)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 6.9ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 23.3ms | Allocations: 2781)
+Completed 200 OK in 29ms (Views: 28.3ms | ActiveRecord: 0.3ms | Allocations: 3061)
+
+
+Started GET "/search?category_query=8&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:14:35 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"8", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 8], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  Rendered search/index.html.erb within layouts/application (Duration: 22.5ms | Allocations: 2033)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 8.9ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 3435)
+Completed 200 OK in 97ms (Views: 90.9ms | ActiveRecord: 0.8ms | Allocations: 4505)
+
+
+Started GET "/search?category_query=3&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:14:51 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"3", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 3], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.1ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 3], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 2], ["id", 14], ["id", 15], ["id", 11]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 4148)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 2.3ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 5530)
+Completed 200 OK in 22ms (Views: 12.5ms | ActiveRecord: 1.1ms | Allocations: 6598)
+
+
+Started GET "/search" for 127.0.0.1 at 2023-10-17 12:15:17 +0800
+Processing by SearchController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  Rendered search/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1410)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 11.4ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 20.8ms | Allocations: 2806)
+Completed 200 OK in 26ms (Views: 23.1ms | ActiveRecord: 0.3ms | Allocations: 3086)
+
+
+Started GET "/search" for 127.0.0.1 at 2023-10-17 12:15:18 +0800
+Processing by SearchController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  Rendered search/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1409)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 2.3ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 2802)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.2ms | Allocations: 3081)
+
+
+Started GET "/search?category_query=3&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:15:40 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"3", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 3], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  [1m[36mQuote Load (0.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ?[0m  [["category_id", 3], ["is_public", 1]]
+  ↳ app/views/search/index.html.erb:20
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 2], ["id", 14], ["id", 15], ["id", 11]]
+  ↳ app/views/search/index.html.erb:20
+  Rendered search/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 4148)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 3.3ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 5538)
+Completed 200 OK in 25ms (Views: 21.2ms | ActiveRecord: 1.0ms | Allocations: 6606)
+
+
+Started GET "/search?category_query=8&commit=Search+Quotes" for 127.0.0.1 at 2023-10-17 12:16:10 +0800
+Processing by SearchController#index as HTML
+  Parameters: {"category_query"=>"8", "commit"=>"Search Quotes"}
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/search_controller.rb:13:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  [1m[36mQuote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "quotes" INNER JOIN "quote_categories" ON "quotes"."id" = "quote_categories"."quote_id" WHERE "quote_categories"."category_id" = ? AND "quotes"."is_public" = ? LIMIT ?[0m  [["category_id", 8], ["is_public", 1], ["LIMIT", 1]]
+  ↳ app/views/search/index.html.erb:17
+  Rendered search/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2032)
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 5.0ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 3437)
+Completed 200 OK in 22ms (Views: 17.0ms | ActiveRecord: 2.2ms | Allocations: 4505)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-17 12:19:15 +0800
+Processing by HomeController#index as HTML
+  [1m[36mQuote Count (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "quotes"[0m
+  ↳ app/controllers/home_controller.rb:6:in `index'
+  [1m[36mQuote Load (0.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."id" ASC LIMIT ? OFFSET ?[0m  [["is_public", 1], ["LIMIT", 1], ["OFFSET", 4]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:20
+  [1m[36mQuote Load (0.3ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."created_at" DESC LIMIT ?[0m  [["is_public", 1], ["LIMIT", 5]]
+  ↳ app/views/home/index.html.erb:38
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?)[0m  [["id", 15], ["id", 14], ["id", 11], ["id", 2]]
+  ↳ app/views/home/index.html.erb:38
+  Rendered home/index.html.erb within layouts/application (Duration: 27.0ms | Allocations: 2671)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 2.6ms | Allocations: 987)
+  Rendered layout layouts/application.html.erb (Duration: 37.0ms | Allocations: 3903)
+Completed 200 OK in 53ms (Views: 37.0ms | ActiveRecord: 3.9ms | Allocations: 5453)
+
+
+Started GET "/login" for 127.0.0.1 at 2023-10-17 12:19:17 +0800
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 491)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 11.5ms | Allocations: 3379)
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 4114)
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.4ms | Allocations: 4373)
+
+
+Started GET "/" for 127.0.0.1 at 2023-10-17 12:46:35 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  [1m[36mQuote Count (3.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "quotes"[0m
+  ↳ app/controllers/home_controller.rb:6:in `index'
+  [1m[36mQuote Load (0.3ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."id" ASC LIMIT ? OFFSET ?[0m  [["is_public", 1], ["LIMIT", 1], ["OFFSET", 4]]
+  ↳ app/controllers/home_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mPhilosopher Load (2.8ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:20
+  [1m[36mQuote Load (0.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."is_public" = ? ORDER BY "quotes"."created_at" DESC LIMIT ?[0m  [["is_public", 1], ["LIMIT", 5]]
+  ↳ app/views/home/index.html.erb:38
+  [1m[36mPhilosopher Load (0.4ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers" WHERE "philosophers"."id" IN (?, ?, ?, ?)[0m  [["id", 15], ["id", 14], ["id", 11], ["id", 2]]
+  ↳ app/views/home/index.html.erb:38
+  Rendered home/index.html.erb within layouts/application (Duration: 56.0ms | Allocations: 11626)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 12.0ms | Allocations: 5535)
+  Rendered layout layouts/application.html.erb (Duration: 72.7ms | Allocations: 17831)
+Completed 200 OK in 128ms (Views: 74.9ms | ActiveRecord: 8.3ms | Allocations: 33613)
+
+
+Started GET "/search" for 127.0.0.1 at 2023-10-17 12:57:30 +0800
+Processing by SearchController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering search/index.html.erb within layouts/application
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/search/index.html.erb:8
+  Rendered search/index.html.erb within layouts/application (Duration: 25.3ms | Allocations: 4242)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 22.4ms | Allocations: 3401)
+  Rendered layout layouts/application.html.erb (Duration: 49.9ms | Allocations: 7990)
+Completed 200 OK in 60ms (Views: 50.0ms | ActiveRecord: 1.4ms | Allocations: 9743)
+
+
+Started GET "/login" for 127.0.0.1 at 2023-10-17 12:57:34 +0800
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 13.6ms | Allocations: 1006)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 8.1ms | Allocations: 3363)
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 4628)
+Completed 200 OK in 25ms (Views: 23.7ms | ActiveRecord: 0.2ms | Allocations: 5282)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-10-17 12:57:47 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"hendrix@email.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "hendrix@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 410)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered layouts/_header.html.erb (Duration: 6.7ms | Allocations: 3338)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 3993)
+Completed 200 OK in 259ms (Views: 9.0ms | ActiveRecord: 0.8ms | Allocations: 8841)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-10-17 12:58:00 +0800
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"hendrix@email.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "hendrix@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:10:in `create'
+Redirected to http://localhost:3000/userhome
+Completed 302 Found in 243ms (ActiveRecord: 0.1ms | Allocations: 969)
+
+
+Started GET "/userhome" for 127.0.0.1 at 2023-10-17 12:58:00 +0800
+Processing by HomeController#uindex as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/uindex.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/home/uindex.html.erb:4
+  Rendered home/uindex.html.erb within layouts/application (Duration: 10.1ms | Allocations: 3124)
+  Rendered layouts/_header.html.erb (Duration: 0.5ms | Allocations: 451)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 3819)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.2ms | Allocations: 4078)
+
+
+Started GET "/quotes/new" for 127.0.0.1 at 2023-10-17 12:58:05 +0800
+Processing by QuotesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering quotes/new.html.erb within layouts/application
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/quotes/_form.html.erb:23:in `collect'
+  [1m[36mPhilosopher Load (0.2ms)[0m  [1m[34mSELECT "philosophers".* FROM "philosophers"[0m
+  ↳ app/views/quotes/_form.html.erb:51:in `collect'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/quotes/_form.html.erb:69:in `collect'
+  Rendered quotes/_form.html.erb (Duration: 30.4ms | Allocations: 6828)
+  Rendered quotes/new.html.erb within layouts/application (Duration: 35.2ms | Allocations: 7209)
+  Rendered layouts/_header.html.erb (Duration: 0.7ms | Allocations: 464)
+  Rendered layout layouts/application.html.erb (Duration: 36.8ms | Allocations: 7931)
+Completed 200 OK in 72ms (Views: 37.8ms | ActiveRecord: 0.8ms | Allocations: 14903)
+
+

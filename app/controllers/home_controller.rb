@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-
     # Quote of the day logic
     # Quote is determined using a daily seed (day as integer / amount of quotes)
     # This ensures a different quote is chosen daily but remains the same for all users throghout that day

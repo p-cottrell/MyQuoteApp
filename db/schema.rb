@@ -19,10 +19,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_24_043619) do
 
   create_table "philosophers", force: :cascade do |t|
     t.string "fname", null: false
-    t.string "lname"
+    t.string "lname", null: true
     t.integer "birth_year", null: false
-    t.integer "death_year"
-    t.text "biography"
+    t.integer "death_year", null: true
+    t.text "biography", null: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,8 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_24_043619) do
 
   create_table "quotes", force: :cascade do |t|
     t.text "text", null: false
-    t.integer "pub_year"
-    t.text "comment"
+    t.integer "pub_year", null: true
+    t.text "comment", null: true
     t.boolean "is_public", default: true
     t.integer "user_id", null: false
     t.integer "philosopher_id", null: false
